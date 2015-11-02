@@ -1,0 +1,25 @@
+---
+- name: create user for DRE components
+  user: name=dre group=users
+  
+- name: install parsers
+  git: repo=https://github.com/amida-tech/DRE-services.git dest=/home/dre/DRE-services update=yes
+  sudo: yes
+  sudo_user: dre
+
+- name: build parsers (1)
+  npm: path=/home/dre/DRE-services
+  sudo: yes
+  sudo_user: dre
+
+#- name: build parsers (2)
+#  shell: grunt chdir=/home/dre/DRE-services
+#  sudo: yes
+#  sudo_user: dre
+  
+- name: Install DRE services config
+  template: src=dre-services.service dest=/etc/systemd/system/dre-services.service
+  notify: restart dre-services
+
+- name: restart dre-services 
+  service: name=dre-services enabled=yes state=started

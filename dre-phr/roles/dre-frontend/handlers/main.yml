@@ -1,0 +1,4 @@
+---
+- name: restart dre-frontend 
+  service: name=dre-frontend state=restarted
+

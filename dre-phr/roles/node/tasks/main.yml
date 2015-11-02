@@ -1,0 +1,27 @@
+---
+#- name: add NodeSource official repository for CentOS
+#  yum: name=https://rpm.nodesource.com/pub/el/{{ ansible_distribution_major_version }}/{{ ansible_architecture }}/nodesource-release-el{{ ansible_distribution_major_version }}-1.noarch.rpm state=present
+
+- name: install Node.js and rest of infrastructure
+  yum: name={{ item }}  state=present
+  with_items: [ "nodejs", "npm", "ruby", "gcc", "make", "automake", "autoconf", "curl-devel", "openssl-devel", "zlib-devel", "httpd-devel", "apr-devel", "apr-util-devel", "sqlite-devel", "ruby-devel", "git", "gem" ]
+
+- name: install json_pure
+  #gem: name=json_pure state=present
+  shell: gem install json_pure
+
+- name: install sass
+  #gem: name=compass state=present
+  shell: gem install sass
+
+- name: install compass
+  #gem: name=compass state=present
+  shell: gem install compass
+
+- name: update --system
+  shell: gem update --system
+
+- name: install dev tools globally
+  npm: name={{item}} global=yes state=present
+  with_items: [ "grunt-cli", "bower", "yo", "generator-karma", "generator-angular", "istanbul", "http-server", "node-gyp", "pm2" ]
+

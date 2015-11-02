@@ -1,0 +1,16 @@
+---
+# DRE Frontend and all requred backend infrastructure.
+
+- hosts: all
+#  remote_user: root
+
+  roles:
+    - selinux
+    - tomcat
+    - mongod
+    - hapi_fhir
+    - node
+    - redis
+    - dre-parsers
+    - dre-frontend
+    - dre-services

@@ -1,0 +1,4 @@
+---
+- name: restart dre-parsers 
+  service: name=dre-parsers state=restarted
+

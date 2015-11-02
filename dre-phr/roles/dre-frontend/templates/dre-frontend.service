@@ -1,0 +1,13 @@
+[Service]
+WorkingDirectory=/home/dre/dre-frontend/dist
+ExecStart=/usr/bin/http-server /home/dre/dre-frontend/dist -p 3000
+Restart=always
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=dre-frontend
+User=dre
+Group=users
+Environment='DEBUG=*' 'NODE_ENV=production'
+
+[Install]
+WantedBy=multi-user.target

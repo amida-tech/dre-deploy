@@ -1,0 +1,14 @@
+[Service]
+WorkingDirectory=/home/dre/DRE-services
+ExecStart=/usr/bin/node server.js
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=dre-services
+User=dre
+Group=users
+Environment='DEBUG=*' 'NODE_ENV=production' 'PORT=3001'
+
+[Install]
+WantedBy=multi-user.target

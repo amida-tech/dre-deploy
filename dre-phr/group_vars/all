@@ -1,0 +1,24 @@
+# Here are variables related to the Tomcat installation
+
+http_port: 8080
+https_port: 8443
+
+# This will configure a default manager-gui user:
+# TODO replace to real password
+
+admin_username: admin
+admin_password: adminsecret
+
+# dre frontend port
+
+frontend_port: 3000
+
+# dre parsers
+
+dre_parsers_port: 9615:9631
+
+# dre services port
+
+dre_services_port: 3001
+
+host: 192.168.33.10
