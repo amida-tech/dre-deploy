@@ -1,5 +1,5 @@
 # dre-deploy
-DRE Deployment script
+Amida Refine Deployment script
 
 Primary target is vagrant - automatically create VM with frontend/services/mongo/redis/fhir server started.
 Probably can be used for AWS deployment (not tested)
