@@ -1,4 +1,4 @@
-# dre-deploy
+# refine-deploy
 Amida Refine Deployment script
 
 Primary target is vagrant - automatically create VM with frontend/services/mongo/redis/fhir server started.
