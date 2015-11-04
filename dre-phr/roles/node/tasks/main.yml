@@ -5,23 +5,29 @@
 - name: install Node.js and rest of infrastructure
   yum: name={{ item }}  state=present
   with_items: [ "nodejs", "npm", "ruby", "gcc", "make", "automake", "autoconf", "curl-devel", "openssl-devel", "zlib-devel", "httpd-devel", "apr-devel", "apr-util-devel", "sqlite-devel", "ruby-devel", "git", "gem" ]
+  sudo: yes
 
 - name: install json_pure
   #gem: name=json_pure state=present
   shell: gem install json_pure
+  sudo: yes
 
 - name: install sass
   #gem: name=compass state=present
   shell: gem install sass
+  sudo: yes
 
 - name: install compass
   #gem: name=compass state=present
   shell: gem install compass
+  sudo: yes
 
 - name: update --system
   shell: gem update --system
+  sudo: yes
 
 - name: install dev tools globally
   npm: name={{item}} global=yes state=present
   with_items: [ "grunt-cli", "bower", "yo", "generator-karma", "generator-angular", "istanbul", "http-server", "node-gyp", "pm2" ]
+  sudo: yes
 

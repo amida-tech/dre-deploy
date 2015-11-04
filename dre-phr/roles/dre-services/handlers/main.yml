@@ -1,4 +1,5 @@
 ---
 - name: restart dre-services 
   service: name=dre-services state=restarted
+  sudo: yes
 

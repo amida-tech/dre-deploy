@@ -1,11 +1,13 @@
 ---
 - name: RedHat | Add source sources
   template: src=mongodb.repo.j2 dest=/etc/yum.repos.d/mongodb-org-3.0.repo
-  
+  sudo: yes
+
 - name: Install MongoDB
   yum: name=mongodb-org state=present
   notify: restart mongod
-  
+  sudo: yes
+
 - name: Start MongoDB
   service: name=mongod state=restarted enabled=yes
-  
+  sudo: yes

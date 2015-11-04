@@ -3,7 +3,9 @@
 
 - name: Install redis
   yum: name=redis enablerepo="epel" state="latest"
+  sudo: yes
 
 - name: Start Redis
   command: service redis restart
+  sudo: yes
 

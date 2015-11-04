@@ -1,6 +1,7 @@
 ---
 - name: create user for DRE components
   user: name=dre group=users
+  sudo: yes
 
 - name: install frontend
   git: repo=https://github.com/amida-tech/dre-frontend.git dest=/home/dre/dre-frontend update=yes
@@ -18,14 +19,16 @@
   sudo_user: dre
 
 - name: build frontend (2)
-  shell: grunt ngconstant:vagrant chdir=/home/dre/dre-frontend
+  shell: grunt ngconstant:env chdir=/home/dre/dre-frontend
+  environment:
+    SERVICE_HOST: "{{ service_host }}"
   sudo: yes
   sudo_user: dre
 
 #sTODO omething wrong with build check later
 - name: build frontend (3)
   shell: grunt build chdir=/home/dre/dre-frontend
-  environment: 
+  environment:
     PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
   sudo: yes
   sudo_user: dre
@@ -33,6 +36,8 @@
 - name: Install DRE frontend service config
   template: src=dre-frontend.service dest=/etc/systemd/system/dre-frontend.service
   notify: restart dre-frontend
+  sudo: yes
 
 - name: restart dre-frontend 
   service: name=dre-frontend enabled=yes state=started
+  sudo: yes

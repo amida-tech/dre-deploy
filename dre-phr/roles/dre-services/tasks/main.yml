@@ -1,6 +1,7 @@
 ---
 - name: create user for DRE components
   user: name=dre group=users
+  sudo: yes
   
 - name: install parsers
   git: repo=https://github.com/amida-tech/DRE-services.git dest=/home/dre/DRE-services update=yes
@@ -20,6 +21,8 @@
 - name: Install DRE services config
   template: src=dre-services.service dest=/etc/systemd/system/dre-services.service
   notify: restart dre-services
+  sudo: yes
 
 - name: restart dre-services 
   service: name=dre-services enabled=yes state=started
+  sudo: yes

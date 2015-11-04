@@ -1,7 +1,7 @@
 ---
-# DRE Frontend and all requred backend infrastructure.
+# Amida Refine Frontend and all requred backend infrastructure.
 
-- hosts: all
+- hosts: refine
 #  remote_user: root
 
   roles:

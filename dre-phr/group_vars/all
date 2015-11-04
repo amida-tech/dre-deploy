@@ -21,4 +21,4 @@ dre_parsers_port: 9615:9631
 
 dre_services_port: 3001
 
-host: 192.168.33.10
+service_host: refine.amida-demo.com
