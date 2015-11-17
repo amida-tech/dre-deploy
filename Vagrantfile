@@ -129,9 +129,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   chef.validation_client_name = "ORGNAME-validator"
   # config.vm.provision :shell, path: "bootstrap.sh"
   
+
+  
   config.vm.provision "ansible" do |ansible|
     ansible.sudo = true
     ansible.playbook = "dre-phr/site.yml"
-  end
+    ansible.groups = {
+      "refine" => ["default"]
+    }
+    end
 end
 
