@@ -10,3 +10,12 @@
   shell: chown tomcat.tomcat /tmp/hapi-fhir-jpaserver-example.war
   shell: cp /tmp/hapi-fhir-jpaserver-example.war /usr/share/tomcat/webapps/fhir.war
   sudo: yes
+
+- name: wait tomcat to start
+  pause: seconds = 30
+
+- name: copy valueset 
+  copy: src=valueSets.json dest=~/valueSets.json
+  
+- name: push valueset to FHIR
+  shell: curl -X POST -H "Content-Type:application/json" --data '@~/valueSets.json' http://127.0.0.1:{{http_port}}/fhir/baseDstu2
