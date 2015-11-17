@@ -11,8 +11,8 @@
   shell: cp /tmp/hapi-fhir-jpaserver-example.war /usr/share/tomcat/webapps/fhir.war
   sudo: yes
 
-- name: wait tomcat to start
-  pause: seconds = 30
+- name: wait app to start
+  pause: seconds=30
 
 - name: copy valueset 
   copy: src=valueSets.json dest=~/valueSets.json
