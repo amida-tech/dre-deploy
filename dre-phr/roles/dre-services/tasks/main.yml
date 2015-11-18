@@ -13,10 +13,10 @@
   sudo: yes
   sudo_user: dre
 
-#- name: build parsers (2)
-#  shell: grunt chdir=/home/dre/DRE-services
-#  sudo: yes
-#  sudo_user: dre
+- name: build parsers (2)
+  shell: PATH=$PATH:/usr/local/bin grunt build chdir=/home/dre/DRE-services
+  sudo: yes
+  sudo_user: dre
   
 - name: Install DRE services config
   template: src=dre-services.service dest=/etc/systemd/system/dre-services.service

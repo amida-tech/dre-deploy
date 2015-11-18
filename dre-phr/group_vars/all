@@ -22,3 +22,4 @@ dre_parsers_port: 9615:9631
 dre_services_port: 3001
 
 service_host: refine.amida-demo.com
+#service_host: "{{ansible_hostname}}"

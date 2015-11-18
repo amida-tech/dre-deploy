@@ -7,15 +7,17 @@
   sudo: yes
 
 - name: Change ownership & copy
-  shell: chown tomcat.tomcat /tmp/hapi-fhir-jpaserver-example.war
-  shell: cp /tmp/hapi-fhir-jpaserver-example.war /usr/share/tomcat/webapps/fhir.war
+  file: path=/tmp/hapi-fhir-jpaserver-example.war owner=tomcat group=tomcat
   sudo: yes
 
-- name: wait app to start
+- shell: cp -n /tmp/hapi-fhir-jpaserver-example.war /usr/share/tomcat/webapps/fhir.war
+  sudo: yes
+
+- name: wait app to (re)-start
   pause: seconds=30
 
 - name: copy valueset 
-  copy: src=valueSets.json dest=~/valueSets.json
-  
-- name: push valueset to FHIR
-  shell: curl -X POST -H "Content-Type:application/json" --data '@~/valueSets.json' http://127.0.0.1:{{http_port}}/fhir/baseDstu2
+  copy: src=valueSets.json dest=/tmp/valueSets.json
+
+- name: push valuesets to FHIR
+  shell: curl -vv -X POST -H 'Content-type:application/json' --data '@/tmp/valueSets.json' http://127.0.0.1:{{http_port}}/fhir/baseDstu2
