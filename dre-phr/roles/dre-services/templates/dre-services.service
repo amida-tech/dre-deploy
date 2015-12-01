@@ -1,5 +1,5 @@
 [Service]
-WorkingDirectory=/home/dre/DRE-services
+WorkingDirectory=/home/dre/dre-services
 ExecStart=/usr/bin/node server.js
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=always

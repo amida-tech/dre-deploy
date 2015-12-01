@@ -4,17 +4,17 @@
   sudo: yes
   
 - name: install parsers
-  git: repo=https://github.com/amida-tech/DRE-services.git dest=/home/dre/DRE-services update=yes
+  git: repo=https://github.com/amida-tech/dre-services.git dest=/home/dre/dre-services update=yes
   sudo: yes
   sudo_user: dre
 
 - name: build parsers (1)
-  npm: path=/home/dre/DRE-services
+  npm: path=/home/dre/dre-services
   sudo: yes
   sudo_user: dre
 
 - name: build parsers (2)
-  shell: PATH=$PATH:/usr/local/bin grunt build chdir=/home/dre/DRE-services
+  shell: PATH=$PATH:/usr/local/bin grunt build chdir=/home/dre/dre-services
   sudo: yes
   sudo_user: dre
   

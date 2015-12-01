@@ -1,0 +1,4 @@
+
+*.log
+
+dre-phr/ansible.cfg
