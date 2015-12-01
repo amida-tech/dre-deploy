@@ -2,3 +2,8 @@
 *.log
 
 dre-phr/ansible.cfg
+
+.vagrant
+.vagrant/machines
+
+.vagrant/provisioners
