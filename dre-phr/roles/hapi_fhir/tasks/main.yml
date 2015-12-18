@@ -1,6 +1,6 @@
 ---  
 - name: Deploy HAPI FHIR
-  get_url: url=https://www.dropbox.com/s/ke6qi40zvm7yrhc/hapi-fhir-jpaserver-example.war?dl=1 dest=/tmp/hapi-fhir-jpaserver-example.war force=no
+  get_url: url=https://www.dropbox.com/s/h4h4az6zu6s382y/hapi-fhir-jpaserver-example.war?dl=0 dest=/tmp/hapi-fhir-jpaserver-example.war force=no
 
 - name: Assure database dir
   file: path=/usr/share/tomcat/derby state=directory owner=tomcat group=tomcat
