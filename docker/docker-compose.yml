@@ -28,3 +28,7 @@ services:
         image: mongo
     hapi:
         image: amidatech/hapi-fhir:latest
+        environment:
+            - URL_PATH=fhir
+        ports:
+            - "8080:8080"
