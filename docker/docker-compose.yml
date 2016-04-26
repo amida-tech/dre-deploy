@@ -1,0 +1,30 @@
+version: '2'
+services:
+    frontend:
+        image: amidatech/dre-frontend:latest
+        ports:
+            - "9000:9000"
+        depends_on:
+            - services
+    services:
+        image: amidatech/dre-services:latest
+        ports:
+            - "3000:3000"
+        depends_on:
+            - mongo
+            - redis
+            - hapi
+        links:
+            - mongo
+            - redis
+            - hapi
+        environment:
+            - HAPI_PORT_8080_TCP_ADDR=hapi
+            - REDIS_PORT_6379_TCP_ADDR=redis
+            - MONGO_PORT_27017_TCP_ADDR=mongo
+    redis:
+        image: redis
+    mongo:
+        image: mongo
+    hapi:
+        image: amidatech/hapi-fhir:latest

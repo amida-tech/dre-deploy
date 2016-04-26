@@ -26,3 +26,10 @@ $ docker ps
 ```
 
 You should see all five containers listed as running.
+
+## Docker Compose
+If you have [Docker Compose](https://docs.docker.com/compose/) installed on your machine, you can run the above configuration with the command:
+
+```bash
+$ docker-compose up
+```
