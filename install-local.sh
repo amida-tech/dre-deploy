@@ -1,10 +1,10 @@
 #Confirm redis is running
-redis-cli PING
+ERROR_MSG=`redis-cli PING`
 if [ "$ERROR_MSG" != "PONG" ]; then
-	echo "Redis is running"
-else
 	echo "Please start redis-server"
     exit 1
+else
+	echo "Redis is running"
 fi
 
 # Confirm mongodb is running
@@ -21,14 +21,21 @@ fi
 ./hapi/hapi.sh start
 
 # Clone services repo in sibling directory
-https://github.com/amida-tech/dre-services.git ..
+cd ..
+git clone https://github.com/amida-tech/dre-services.git
+# set correct FHIR path
+cd ./dre-services
+find . -type f -name "*.js" -exec sed -i '' 's#/fhir/baseDstu2#/fhir-test/baseDstu2#g' {} \;
 # NPM install and run
 npm install
-npm start
+npm start &
 
 # Clone frontend repo in sibling directory
-https://github.com/amida-tech/dre-frontend.git ..
+cd ..
+git clone https://github.com/amida-tech/dre-frontend.git
 # NPM install and run
+cd ./dre-frontend
 npm install
 bower install
-grunt serve
+grunt ngconstant:local
+grunt serve &
